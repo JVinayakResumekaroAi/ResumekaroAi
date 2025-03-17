@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Manrope:wght@200..800&family=Onest:wght@100..900&family=Outfit:wght@100..900&family=Over+the+Rainbow&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", "sans-serif";
+  --font-manrope: "Manrope", "sans-serif";
+  --font-outfit: "Outfit", "sans-serif";
+  --font-lexend: "Lexend", "sans-serif";
+  --font-onest: "Onest", "sans-serif";
+  --font-rainbow: "Over the Rainbow", "cursive";
+}
+
+.blueGradient {
+  background-image: linear-gradient(to bottom, #336ee7, #4c95fb);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px 100px rgba(76, 149, 251, 0.7);
+}
+
+.purpleGradient {
+  background-image: linear-gradient(to bottom, #c697ec, #ab2fff, #7713c5);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px 100px rgba(171, 47, 255, 0.4);
+}
+
+@keyframes loopscroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.loopScroll {
+  animation: loopscroll 30s linear infinite;
+}
+
+.resume-animation {
+  width: 26rem;
+  height: 222px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  overflow-y: hidden;
+}
+.rb-1 {
+  width: 12.5rem;
+  height: 46rem;
+}
+.resume-box1 {
+  width: 100%;
+  animation: resume-box1-animation 10s linear infinite;
+  display: inline-block;
+}
+.rb-2 {
+  width: 12.5rem;
+  height: 46rem;
+}
+.resume-box2 {
+  width: 100%;
+  display: inline-block;
+  animation: resume-box2-animation 10.5s linear infinite reverse;
+}
+.resume-box1 img,
+.resume-box2 img {
+  width: 80%;
+  height: 15rem;
+  margin: 10%;
+  display: inline-block;
+}
+
+@keyframes resume-box1-animation {
+  0% {
+    transform: translate();
+  }
+  100% {
+    transform: translatey(-100%);
+  }
+}
+@keyframes resume-box2-animation {
+  0% {
+    transform: translate();
+  }
+  100% {
+    transform: translatey(-100%);
+  }
+}
+
+.mySwiper * img {
+  border: 2px solid;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.mySwiper .swiper-slide-active {
+  z-index: 10;
+  scale: 1.2;
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* Remove arrows in Webkit browsers (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
