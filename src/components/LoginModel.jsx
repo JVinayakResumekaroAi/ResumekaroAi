@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import OtpVerification from "./OTPVerification";
+import VerificationOtp from "./VerificationOtp";
 
 const LoginModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -88,7 +88,8 @@ const LoginModal = ({ isOpen, onClose }) => {
           </div>
           {/* OTP Verification */}
 
-          {otpPopup && <OtpVerification />}
+          {otpPopup && <VerificationOtp />}
+
           {/* Error message */}
           {errorMessage && (
             <div className="text-red-500 text-sm -mt-2">{errorMessage}</div>

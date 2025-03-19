@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const OtpVerification = () => {
+const VerificationOtp = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef([]);
 
@@ -96,4 +96,4 @@ const OtpVerification = () => {
   );
 };
 
-export default OtpVerification;
+export default VerificationOtp;
