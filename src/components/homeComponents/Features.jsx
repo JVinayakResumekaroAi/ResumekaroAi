@@ -41,7 +41,7 @@ const Features = () => {
               <p className="text-[22px] text-[#151515] font-manrope font-semibold">
                 AI Resume Optimization{" "}
               </p>
-              <p className="font-lexend font-semibold text-[#F0B100] text-[24px]">
+              <p className="font-lexend font-semibold text-[#c4930e] text-[24px]">
                 Make Your Existing Resume Stand Out!
               </p>
             </div>

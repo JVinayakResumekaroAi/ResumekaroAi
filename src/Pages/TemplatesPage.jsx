@@ -9,12 +9,20 @@ const TemplatesPage = () => {
   const [selectedExperience, setSelectedExperience] = useState("");
   const [submittedExperience, setSubmittedExperience] = useState("");
 
+  // Handle filter selection
   const handleFilterChange = (e) => {
     setSelectedExperience(e.target.value);
   };
 
+  // Submit filter
   const handleSubmit = () => {
     setSubmittedExperience(selectedExperience);
+  };
+
+  // Clear filter
+  const handleClearFilter = () => {
+    setSelectedExperience("");
+    setSubmittedExperience("");
   };
   return (
     <>
@@ -54,10 +62,22 @@ const TemplatesPage = () => {
               Submit
             </button>
           </div>
+
+          {/* Clear Filter Button (Only Visible When Filter is Applied) */}
+          {submittedExperience && (
+            <div className="relative ">
+              <button
+                onClick={handleClearFilter}
+                className="px-4 py-[10px] rounded-full ring-2 ring-[#E2E8F0] text-gray-600  transition hover:bg-gray-100 hover:scale-95 cursor-pointer"
+              >
+                Clear Filter
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Resume Components */}
-        <div className="w-full  flex flex-col gap-[30px]">
+        <div className="w-full flex flex-col gap-[30px]">
           {submittedExperience === "" && (
             <>
               <ExperienceResume />

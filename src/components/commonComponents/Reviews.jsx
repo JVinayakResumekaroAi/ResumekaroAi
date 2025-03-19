@@ -4,7 +4,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
-import ReviewCard from "../ReviewCard";
+import ReviewCard from "./ReviewCard";
 
 const Reviews = () => {
   const reviews = [

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import LoginModal from "../LoginModel";
+import LoginModal from "./LoginModel";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -45,10 +45,11 @@ const Navbar = () => {
               className="flex gap-1 cursor-pointer hover:text-pink-600 transition-all hover:underline"
               onClick={toggleTool}
             >
-              <img src="/img/Star.svg" className="w-[12px]" />
+              <img src="/img/Star.svg" className="w-[12px]" alt="star" />
               Tools
               <img
                 src="/img/toolsDownArr.svg"
+                alt="down arrow"
                 className={`w-[12px] transition-transform ${
                   isToolOpen ? "rotate-180" : "rotate-0"
                 }`}
@@ -57,7 +58,7 @@ const Navbar = () => {
 
             {/* Dropdown Menu */}
             {isToolOpen && (
-              <div className="absolute -bottom-[200px] -left-[400px] flex gap-[20px] bg-sky-200 p-[12px] rounded-[24px] ">
+              <div className="absolute -bottom-[200px] -left-[400px] flex gap-[20px] bg-sky-200 p-[12px] rounded-[24px] shadow-2xl shadow-sky-100 ">
                 <Link to={"/templates"} onClick={toggleTool}>
                   <div className="relative w-[200px] h-[144px] bg-[#F8F8F8] rounded-[24px] flex cursor-pointer hover:shadow-[0px_0px_0px_2px_#4C95FB] hover:bg-[linear-gradient(to_top_right,#b0d7ff_1%,#F8f8f8_25%)] transition-all overflow-hidden group">
                     <div className=" p-[15px] flex items-end">
@@ -139,6 +140,7 @@ const Navbar = () => {
               Organization
               <img
                 src="/img/toolsDownArr.svg"
+                alt="down arrow"
                 className={`w-[12px] transition-transform ${
                   isOrgOpen ? "rotate-180" : "rotate-0"
                 }`}

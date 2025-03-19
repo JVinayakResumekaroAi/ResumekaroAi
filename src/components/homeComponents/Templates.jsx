@@ -40,6 +40,7 @@ const Templates = () => {
         </div>
         {/* button right */}
         <button
+          title="Right Button"
           onClick={handlePrev}
           className="absolute -bottom-[320px] left-[430px] z-40  group flex justify-center items-center    bg-gradient-to-t from-[#336EE7] to-[#4C95FB] hover:scale-90 w-11 h-11 transition-all duration-200 rounded-full "
         >
@@ -60,6 +61,7 @@ const Templates = () => {
 
         {/* button left */}
         <button
+          title="Left Button"
           onClick={handleNext}
           className="absolute -bottom-[320px] right-[430px] z-40 group flex justify-center items-center   w-11 h-11 transition-all duration-500 rounded-full  bg-gradient-to-t from-[#336EE7] to-[#4C95FB] hover:scale-90"
         >
