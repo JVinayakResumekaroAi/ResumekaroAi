@@ -1,31 +1,21 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import Footer from "./components/Footer";
-import Steps from "./components/Steps";
-import Features from "./components/Features";
-import FAQ from "./components/FAQ";
-import Templates from "./components/Templates";
-import WhyResumeKaro from "./components/WhyResumeKaro";
-import Reviews from "./components/Reviews";
-import { Join } from "./components/Join";
-import Subscription from "./components/Subscription";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import TemplatesPage from "./Pages/TemplatesPage";
+import Footer from "./components/commonComponents/Footer";
+import Navbar from "./components/commonComponents/Navbar";
 
 const App = () => {
   return (
-    <>
+    <Router>
       <Navbar />
-      <HeroSection />
-      <Steps />
-      <Subscription />
-      <Features />
-      <Templates />
-      <WhyResumeKaro />
-      <Reviews />
-      <Join />
-      <FAQ />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/templates" element={<TemplatesPage />} />
+        <Route path="*" element={<h1>404 - Not Found</h1>} />{" "}
+      </Routes>
       <Footer />
-    </>
+    </Router>
   );
 };
 

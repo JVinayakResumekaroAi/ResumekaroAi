@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Check = ({ title }) => {
   return (
@@ -53,9 +54,11 @@ const HeroSection = () => {
       </section>
 
       {/* button */}
-      <button className="font-inter text-white px-[20px] py-[10px] rounded-lg bg-gradient-to-t from-[#336EE7] to-[#4C95FB] cursor-pointer font-bold text-[22px] mx-auto block">
-        Build Your AI Resume
-      </button>
+      <Link to={"/templates"}>
+        <button className="font-inter text-white px-[20px] py-[10px] rounded-lg bg-gradient-to-t from-[#336EE7] to-[#4C95FB] cursor-pointer font-bold text-[22px] mx-auto block">
+          Build Your AI Resume
+        </button>
+      </Link>
     </header>
   );
 };

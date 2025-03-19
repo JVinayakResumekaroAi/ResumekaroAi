@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Join = () => {
+const Join = () => {
   return (
     <section className="mt-10 max-w-[1320px] min-w-auto mx-auto  rounded-[35px]  bg-gradient-to-t from-[#7713C5] to-[#AB2FFF] flex justify-between">
       <div className="flex flex-col gap-10  px-[40px] py-[50px]">
@@ -46,3 +46,5 @@ export const Join = () => {
     </section>
   );
 };
+
+export default Join;
