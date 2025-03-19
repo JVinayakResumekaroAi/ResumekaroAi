@@ -78,7 +78,7 @@ const VerificationOtp = () => {
             type="submit"
             className="cursor-pointer w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-md hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300 transition-colors duration-150"
           >
-            Verify Account
+            Verify Account.
           </button>
         </div>
       </form>
