@@ -136,6 +136,7 @@ const NewUserInput = () => {
         <VerificationOtp
           handleVerifyClick={handleVerifyClick}
           handleEditPhoneClick={handleEditPhoneClick}
+          phoneNumber={phoneNumber}
         />
       )}
       {/* create password */}

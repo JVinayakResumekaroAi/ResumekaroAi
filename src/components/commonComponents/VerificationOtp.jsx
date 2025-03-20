@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const VerificationOtp = ({ handleVerifyClick, handleEditPhoneClick }) => {
+const VerificationOtp = ({
+  handleVerifyClick,
+  handleEditPhoneClick,
+  phoneNumber,
+}) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef([]);
 
@@ -61,7 +65,7 @@ const VerificationOtp = ({ handleVerifyClick, handleEditPhoneClick }) => {
         className="text-[14px] text-indigo-500 mb-5 hover:underline cursor-pointer"
         onClick={editPhone}
       >
-        +91 8143923984{" "}
+        +91 {phoneNumber}
       </p>
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center gap-3">

@@ -40,6 +40,7 @@ const ExistingUserInput = () => {
       setErrorMessage("Please fill in a valid 10-digit mobile number");
     } else {
       setErrorMessage("");
+      setPassword("");
       setSteps("otp");
     }
   };
@@ -59,6 +60,17 @@ const ExistingUserInput = () => {
     if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
       setErrorMessage("Please fill in a valid 10-digit mobile number");
     } else if (password === "") {
+      setErrorMessage("Please enter your password");
+    } else if (password.length < 6) {
+      setErrorMessage("Password must be at least 6 characters long");
+    } else {
+      setErrorMessage("");
+      alert(`Phone: ${phoneNumber}\nPassword: ${password}`);
+    }
+  };
+  // Handle "login" button click
+  const handleForgotLoginClick = () => {
+    if (password === "") {
       setErrorMessage("Please enter your password");
     } else if (password.length < 6) {
       setErrorMessage("Password must be at least 6 characters long");
@@ -172,6 +184,7 @@ const ExistingUserInput = () => {
         <VerificationOtp
           handleVerifyClick={handleVerifyClick}
           handleEditPhoneClick={handleEditPhoneClick}
+          phoneNumber={phoneNumber}
         />
       )}
 
@@ -206,7 +219,7 @@ const ExistingUserInput = () => {
             <div className="w-full text-red-500 text-sm">{errorMessage}</div>
           )}
           <button
-            onClick={handleNextClick}
+            onClick={handleForgotLoginClick}
             className="bg-white border border-gray-300 rounded-full w-fit h-12 px-8 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
           >
             Login
