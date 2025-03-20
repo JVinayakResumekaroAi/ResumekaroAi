@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import LoginModal from "./LoginModel";
 import { Link } from "react-router-dom";
+import SignInPopup from "./SignInPopup";
+import Login from "./Login";
 
 const Navbar = () => {
   const [isToolOpen, setIsToolOpen] = useState(false);
@@ -199,7 +201,8 @@ const Navbar = () => {
         </section>
       </nav>
       {/* signin popup */}
-      <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {/* <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
+      <Login isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

@@ -9,6 +9,7 @@ const ExperienceResume = () => {
   };
 
   const [popupImage, setPopupImage] = useState(null);
+  const [popupBtn, setPopupBtn] = useState(null);
 
   // Array of images and their corresponding URLs
   const expResumes = [
@@ -32,14 +33,14 @@ const ExperienceResume = () => {
   // Show only the first 10 expResumes when not expanded
   const visibleexpResumes = isExpanded ? expResumes : expResumes.slice(0, 10);
 
-  // Open popup with the clicked image
-  const openPopup = (img) => {
+  const openPopup = (img, url) => {
     setPopupImage(img);
+    setPopupBtn(url);
   };
 
-  // Close popup
   const closePopup = () => {
     setPopupImage(null);
+    setPopupBtn(null);
   };
   return (
     <div className="flex flex-col items-center gap-[30px] w-full bg-[#F2F7FF] border border-[#E2E8F0] rounded-[30px] px-[50px] py-[30px] ">
@@ -53,7 +54,7 @@ const ExperienceResume = () => {
           <div
             key={index}
             className="group relative hover:scale-110 transition duration-300 ease-in-out cursor-pointer"
-            onClick={() => openPopup(resume.img)}
+            onClick={() => openPopup(resume.img, resume.url)}
           >
             {/* Resume Image */}
             <img src={resume.img} alt={`Resume ${index + 1}`} />
@@ -93,6 +94,14 @@ const ExperienceResume = () => {
               alt="Expanded Resume"
               className="w-full h-auto max-h-screen object-contain rounded-lg cursor-default"
             />
+            <Link
+              to={popupBtn}
+              className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-6 py-2 rounded-full text-xl font-bold hover:bg-blue-600 transition z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Select This Template
+            </Link>
+
             <div
               className="w-12 absolute -top-4 -right-4 z-10 cursor-pointer text-red-500 bg-red-50 p-1 rounded-full hover:scale-110 transition"
               onClick={closePopup}

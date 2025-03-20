@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const VerificationOtp = () => {
+const VerificationOtp = ({ handleVerifyClick, handleEditPhoneClick }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef([]);
 
@@ -39,7 +39,13 @@ const VerificationOtp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const otpValue = otp.join("");
-    alert(`OTP Submitted: ${otpValue}`);
+    console.log(otpValue);
+    handleVerifyClick();
+    // alert(`OTP Submitted: ${otpValue}`);
+  };
+
+  const editPhone = () => {
+    handleEditPhoneClick();
   };
 
   const handleResend = () => {
@@ -47,15 +53,16 @@ const VerificationOtp = () => {
   };
 
   return (
-    <div className="w-full mx-auto text-center  sm:px-8 py-10 rounded-xl border-2 border-[#DCDCDC]">
-      <header className="mb-8">
-        <h1 className="text-2xl font-bold mb-1">Mobile Phone Verification</h1>
-        <p className="text-[15px] text-slate-500">
-          Enter the 4-digit verification code that was sent to your phone
-          number.
-        </p>
-      </header>
-
+    <div className="w-full mx-auto text-center   rounded-xl  h-[200px] -mt-2 mb-2 ">
+      <p className="text-[14px] text-slate-500 mb-2">
+        Enter the code sent to your Phone
+      </p>
+      <p
+        className="text-[14px] text-indigo-500 mb-5 hover:underline cursor-pointer"
+        onClick={editPhone}
+      >
+        +91 8143923984{" "}
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center gap-3">
           {otp.map((value, index) => (
@@ -73,7 +80,7 @@ const VerificationOtp = () => {
           ))}
         </div>
 
-        <div className="max-w-[260px] mx-auto mt-6">
+        <div className="max-w-[260px] mx-auto mt-3">
           <button
             type="submit"
             className="cursor-pointer w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-md hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300 transition-colors duration-150"
@@ -83,7 +90,7 @@ const VerificationOtp = () => {
         </div>
       </form>
 
-      <div className="text-sm text-slate-500 mt-4">
+      <div className="text-sm text-slate-500 mt-5">
         Didn't receive code?{" "}
         <button
           onClick={handleResend}
