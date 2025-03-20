@@ -4,6 +4,7 @@ const VerificationOtp = ({
   handleVerifyClick,
   handleEditPhoneClick,
   phoneNumber,
+  handleEditPhoneClickForLogin,
 }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef([]);
@@ -49,7 +50,11 @@ const VerificationOtp = ({
   };
 
   const editPhone = () => {
-    handleEditPhoneClick();
+    if (handleEditPhoneClickForLogin) {
+      handleEditPhoneClickForLogin();
+    } else if (handleEditPhoneClick) {
+      handleEditPhoneClick();
+    }
   };
 
   const handleResend = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import VerificationOtp from "./VerificationOtp";
 
 const ExistingUserInput = () => {
-  const [steps, setSteps] = useState("login");
+  const [steps, setSteps] = useState("loginPhone");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -34,6 +34,24 @@ const ExistingUserInput = () => {
     setShowPassword((prev) => !prev);
   };
 
+  // Handle login with otp btn
+  const handleContinueWithOtp = () => {
+    if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+      setErrorMessage("Please fill in a valid 10-digit mobile number");
+    } else {
+      setSteps("loginOtp");
+    }
+  };
+
+  // Handle login with password btn
+  const handleContinueWithPassword = () => {
+    if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+      setErrorMessage("Please fill in a valid 10-digit mobile number");
+    } else {
+      setSteps("loginPassword");
+    }
+  };
+
   // Handle "next" button click for forgot password
   const handleNextClick = () => {
     if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
@@ -53,6 +71,11 @@ const ExistingUserInput = () => {
   // handle edit phone number
   const handleEditPhoneClick = () => {
     setSteps("phone");
+  };
+
+  // handle edit phone number for login
+  const handleEditPhoneClickForLogin = () => {
+    setSteps("loginPhone");
   };
 
   // Handle "login" button click
@@ -82,7 +105,7 @@ const ExistingUserInput = () => {
 
   return (
     <>
-      {steps === "login" && (
+      {steps === "loginPhone" && (
         <div className="relative flex flex-col gap-2.5 -mt-5 ">
           <div>
             <label
@@ -103,6 +126,51 @@ const ExistingUserInput = () => {
             />
           </div>
 
+          {/* Error message */}
+          {errorMessage && (
+            <div className=" ml-5 text-red-500 text-sm ">{errorMessage}</div>
+          )}
+
+          <div className="w-full flex mt-5 justify-end gap-5 ">
+            <button
+              onClick={handleContinueWithOtp}
+              className=" -mt-3 bg-white border border-gray-300 rounded-full w-fit h-12 px-10 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
+            >
+              OTP
+            </button>
+            <button
+              onClick={handleContinueWithPassword}
+              className=" -mt-3 bg-white border border-gray-300 rounded-full w-fit h-12 px-10 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
+            >
+              Password
+            </button>
+          </div>
+        </div>
+      )}
+
+      {steps === "loginPassword" && (
+        <div className="relative flex flex-col gap-2.5 ">
+          <p
+            className="text-[14px] text-indigo-500 mb-5 hover:underline cursor-pointer flex gap-1 items-center"
+            onClick={() => setSteps("loginPhone")}
+          >
+            +91 {phoneNumber}
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              height="16px"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+              <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+              <path d="M16 5l3 3"></path>
+            </svg>
+          </p>
           <div className="relative">
             <label
               htmlFor="password"
@@ -132,7 +200,7 @@ const ExistingUserInput = () => {
             <div className="-mt-3 text-red-500 text-sm ">{errorMessage}</div>
           )}
 
-          <div className="w-full flex justify-between ">
+          <div className="w-full flex justify-between px-5 ">
             <button
               onClick={() => setSteps("phone")}
               className="cursor-pointer font-small text-slate-500 hover:text-indigo-600 transition"
@@ -141,7 +209,7 @@ const ExistingUserInput = () => {
             </button>
             <button
               onClick={handleLoginClick}
-              className=" -mt-3 bg-white border border-gray-300 rounded-full w-fit h-12 px-10 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
+              className="  bg-white border border-gray-300 rounded-full w-fit h-12 px-10 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
             >
               LogIn
             </button>
@@ -149,6 +217,14 @@ const ExistingUserInput = () => {
         </div>
       )}
 
+      {steps === "loginOtp" && (
+        <VerificationOtp
+          handleEditPhoneClickForLogin={handleEditPhoneClickForLogin}
+          phoneNumber={phoneNumber}
+        />
+      )}
+
+      {/* for forgot password */}
       {steps === "phone" && (
         <div className="relative flex flex-col items-end gap-2 ">
           <label
@@ -179,7 +255,7 @@ const ExistingUserInput = () => {
           </button>
         </div>
       )}
-
+      {/* for forgot password */}
       {steps === "otp" && (
         <VerificationOtp
           handleVerifyClick={handleVerifyClick}
@@ -187,7 +263,7 @@ const ExistingUserInput = () => {
           phoneNumber={phoneNumber}
         />
       )}
-
+      {/* for forgot password */}
       {steps === "createPassword" && (
         <div className="relative flex flex-col items-end gap-2 ">
           <label

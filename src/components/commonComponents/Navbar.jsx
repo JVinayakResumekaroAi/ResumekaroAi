@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className=" relative z-50 max-w-[1440px] min-w-auto mx-auto px-[50px] py-[15px] border-b-[1.5px] border-[#E5E5E5] flex items-center justify-between text-[#151515] font-inter">
+      <nav className="sticky top-0 z-50 max-w-[1440px] min-w-auto mx-auto px-[50px] py-[15px] border-b-[1.5px] border-[#E5E5E5] flex items-center justify-between text-[#151515] font-inter bg-white">
         <Link to={"/"}>
           <img
             src="/img/Logo.webp"

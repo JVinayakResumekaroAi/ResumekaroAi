@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Subscription = () => {
   return (
@@ -13,9 +14,11 @@ const Subscription = () => {
           Edit and Download
         </p>
       </div>
-      <button className=" text-[20px]  w-fit h-fit  px-[20px] py-[10px] rounded-4xl font-inter font-semibold   bg-gradient-to-b from-[#336EE7] to-[rgb(76,149,251)]  cursor-pointer hover:scale-95 hover:shadow-2xl transition-all border-white border-3  text-white">
-        Build Your ATS Friendly Resume Now
-      </button>
+      <Link to={"/templates"}>
+        <button className=" text-[20px]  w-fit h-fit  px-[20px] py-[10px] rounded-4xl font-inter font-semibold   bg-gradient-to-b from-[#336EE7] to-[rgb(76,149,251)]  cursor-pointer hover:scale-95 hover:shadow-2xl transition-all border-white border-3  text-white">
+          Build Your ATS Friendly Resume Now
+        </button>
+      </Link>
     </section>
   );
 };
