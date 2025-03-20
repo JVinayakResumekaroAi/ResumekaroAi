@@ -12,8 +12,10 @@ const Login = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center   backdrop-blur-sm z-50    bg-[rgba(0,0,0,0.27)] transition-all ">
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg min-w-[900px] p-5 items-center gap-3">
-        <div className="border bg-red-500 w-1/2 h-[600px] rounded-2xl"></div>
+      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-[900px] p-5 items-center gap-3">
+        <div className="  w-1/2 h-[600px] rounded-2xl  overflow-hidden">
+          <img src="/img/LoginImage.png" alt="img" className="w-full" />
+        </div>
 
         {/* form */}
 
