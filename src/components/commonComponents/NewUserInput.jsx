@@ -1,14 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-import VerificationOtp from "./VerificationOtp";
+import NewUserOtp from "./NewUserOtp";
 
 const NewUserInput = () => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
   const [steps, setSteps] = useState("phone");
+
+  const [showPwdInputAfterVer, setShowPwdInputAfterVer] = useState(false);
 
   // Handle phone input
   const handlePhoneInput = (e) => {
@@ -54,7 +57,7 @@ const NewUserInput = () => {
 
   // Handle "verify account btn" button click
   const handleVerifyClick = () => {
-    setSteps("password");
+    setShowPwdInputAfterVer(true);
   };
 
   // handle edit phone number
@@ -133,12 +136,63 @@ const NewUserInput = () => {
       )}
       {/* OTP Verification */}
       {steps === "otp" && (
-        <VerificationOtp
-          handleVerifyClick={handleVerifyClick}
-          handleEditPhoneClick={handleEditPhoneClick}
-          phoneNumber={phoneNumber}
-        />
+        <div className=" -mt-5 space-y-3">
+          {/* OTP Component */}
+          <NewUserOtp
+            handleVerifyClick={handleVerifyClick}
+            handleEditPhoneClick={handleEditPhoneClick}
+            phoneNumber={phoneNumber}
+          />
+
+          {/* Password Form */}
+          {showPwdInputAfterVer && (
+            <div className="relative flex flex-col items-end  ">
+              <label
+                htmlFor="password"
+                className="w-full block mb-2 text-sm font-medium text-gray-900"
+              >
+                Create Password
+              </label>
+
+              <div className="relative w-full flex gap-2   ">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  className="flex items-center justify-center bg-white border border-gray-300 rounded-full w-full h-12 px-6 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400"
+                  placeholder="Enter your password here"
+                  required
+                  value={password}
+                  onChange={handlePasswordInput}
+                />
+                <button
+                  onClick={handleCreateAccountClick}
+                  className="bg-white border border-gray-300 rounded-full w-fit h-12 px-6 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 text-nowrap"
+                >
+                  Next{" "}
+                </button>
+
+                {/* Eye icon for toggling password visibility */}
+                <img
+                  src={
+                    showPassword ? "/Icons/eyeOpen.svg" : "/Icons/eyeClose.svg"
+                  }
+                  alt={showPassword ? "Hide Password" : "Show Password"}
+                  className="w-5 opacity-70 absolute right-28 top-3.5 cursor-pointer hover:opacity-100"
+                  onClick={togglePasswordVisibility}
+                />
+              </div>
+
+              {errorMessage && (
+                <div className="absolute -bottom-9 left-2 text-red-500 text-sm w-full -mt-3 mb-3 ml-3">
+                  {errorMessage}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       )}
+
       {/* create password */}
       {steps === "password" && (
         <div className="relative flex flex-col items-end">

@@ -5,7 +5,7 @@ import TemplatesPage from "./Pages/TemplatesPage";
 import Footer from "./components/commonComponents/Footer";
 import Navbar from "./components/commonComponents/Navbar";
 import SignIn from "./Pages/SignIn";
-import SignInPopup from "./components/commonComponents/SignInPopup";
+import UserDashboard from "./Pages/UserDashboard";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/templates" element={<TemplatesPage />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/signinpopup" element={<SignInPopup />} />
+        <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="*" element={<h1>404 - Not Found</h1>} />{" "}
       </Routes>
       <Footer />

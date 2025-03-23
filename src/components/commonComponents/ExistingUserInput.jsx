@@ -131,19 +131,26 @@ const ExistingUserInput = () => {
             <div className=" ml-5 text-red-500 text-sm ">{errorMessage}</div>
           )}
 
-          <div className="w-full flex mt-5 justify-end gap-5 ">
-            <button
-              onClick={handleContinueWithOtp}
-              className=" -mt-3 bg-white border border-gray-300 rounded-full w-fit h-12 px-10 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
-            >
-              OTP
-            </button>
-            <button
-              onClick={handleContinueWithPassword}
-              className=" -mt-3 bg-white border border-gray-300 rounded-full w-fit h-12 px-10 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
-            >
-              Password
-            </button>
+          <div className="w-full flex mt-5 items-center gap-1 flex-col ">
+            <p className="text-[14px] text-gray-500 mb-5 text-nowrap">
+              Continue With
+            </p>
+
+            <div className="flex gap-5 ">
+              <button
+                onClick={handleContinueWithOtp}
+                className=" -mt-3 bg-white border border-gray-300 rounded-full w-fit h-12 px-13 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
+              >
+                OTP
+              </button>
+              <p className="text-[14px] text-gray-500 mb-5 text-nowrap">or </p>
+              <button
+                onClick={handleContinueWithPassword}
+                className=" -mt-3 bg-white border border-gray-300 rounded-full w-fit h-12 px-10 text-gray-900 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 cursor-pointer hover:bg-blue-50 "
+              >
+                Password
+              </button>
+            </div>
           </div>
         </div>
       )}
