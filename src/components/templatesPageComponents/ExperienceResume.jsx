@@ -80,7 +80,7 @@ const ExperienceResume = () => {
       </div>
 
       {/* Full-Screen Popup */}
-      {popupImage && (
+      {/* {popupImage && (
         <div
           className="fixed inset-0 bg-[rgba(0,0,0,0.27)] z-50 flex items-center justify-center cursor-pointer"
           onClick={closePopup}
@@ -115,6 +115,46 @@ const ExperienceResume = () => {
               >
                 <path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path>
               </svg>
+            </div>
+          </div>
+        </div>
+      )} */}
+
+      {popupImage && (
+        <div
+          className="fixed inset-0 bg-[rgba(0,0,0,0.6)] backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300"
+          onClick={closePopup}
+        >
+          <div
+            className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[95vh] transform transition-all duration-300 scale-100 hover:scale-[1.02]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              className="absolute top-4 right-4 bg-red-500 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-600 transition-transform duration-300 hover:rotate-90 shadow-lg cursor-pointer"
+              onClick={closePopup}
+            >
+              ✕
+            </button>
+
+            {/* Image Container */}
+            <div className="max-h-[80vh] overflow-y-auto custom-scrollbar p-4">
+              <img
+                src={popupImage}
+                alt="Expanded Resume"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Select Button */}
+            <div className="p-6 text-center bg-gray-50">
+              <Link
+                to={popupBtn}
+                className="bg-blue-500 text-white px-8 py-3 rounded-xl text-lg font-semibold shadow-md hover:bg-blue-600 transition-all duration-300 hover:shadow-lg"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Select This Template
+              </Link>
             </div>
           </div>
         </div>
